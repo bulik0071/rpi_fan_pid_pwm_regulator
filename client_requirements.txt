@@ -1,0 +1,28 @@
+Witam, mam mniej więcej taki projekt to wykonania:
+Mam do zbudowania układ, który będzie utrzymywał stały przepływ powietrza w komorze. Układ będzie się  składał z :
+- sterownik raspberry Pi 4
+-RS485 can Hat do raspberry 
+-Przetwornik A/C - ADS1115
+-Moduł sterowania PWM AVT 1825
+- przepływomierz FS7.0.1L.195 wraz z układem do pomiarów 
+- Wentylator 24 V
+-potencjometr /enkoder
+Zasada jest taka, układ się uruchamia, 
+operator ustawia zadany przepływ powietrza poprzez jakiś potencjometr. 
+i ten przepływ jest ustawiony. Potem gdy będzie jakieś zakłócenie (np. włożę rękę pomiędzy wentylator, a przepływomierz ) 
+to obroty wentylatora muszą wzrosnąć, aby utrzymać stały przepływ powietrza. 
+Ma być regulator przynajmniej PI do regulacji tych obrotów.
+
+
+https://how2electronics.com/how-to-use-ads1115-16-bit-adc-module-with-raspberry-pi/
+https://serwis.avt.pl/manuals/AVT1825.pdf
+https://www.mouser.pl/datasheet/2/1426/fs7_0_1l_195-2950470.pdf
+
+Flow programu
+1. Odczytaj dane z potencjometru - uśrednianie - do pełnego inta - wyprostowanie zera
+2. Odczytaj dane z przepływomierza
+3. Wyreguluj obroty wentylatora jeśli zachodzi potrzeba
+4. Zapisz dane do csv - wartość zadana z potencjometru, wartość realizowana - przepływomierz, prędkość wentylatora - 0-100%
+q - koniec pracy programu
+
+
